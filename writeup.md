@@ -43,7 +43,7 @@ I used the cv2.getPerspectiveTransform() and cv2.warpPerspective() functions to 
 
 I apply a perspective transform that zooms in on the farther object on the road images, and lets us change our perspective to view the same scene from different viewpoints and angles.
 
-The code for my perspective transform includes a function called `perspective_transform()`, which takes as inputs an image, dynamically calculate the source and destination points and apply the cv2 functions on the image. I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
+The code for my perspective transform includes a function called `perspective_transform()`, which takes as inputs an image, dynamically calculate the source and destination points and apply the cv2 functions on the image. I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image, whether they are straight or curved.
 Here is an example of a bird's-eye view transform I did on an example image:
 
 ![]( https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/readme_img/perspective_transform.jpg?raw=true)
@@ -67,25 +67,47 @@ To create a thresholded binary image we need to use various aspects of your grad
 
 6. Histogram equalization - improve the contrast of our images, in order to improve the white lines detection.
 
-Here is an example of performing the above techniques on the example image:
+The main thresholding step can be found in the notebook in the function thresholding() that handle with the thresholded binary image procedure.
+
+Here is an example of performing the above techniques on a test image:
 
 ![]( https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/readme_img/thresholding_samples.jpg?raw=true)
 
-### Pipeline (single images)
+## Locate the Lane Lines
 
-#### 1. Provide an example of a distortion-corrected image.
+We now have a thresholded warped image and we're ready to map out the lane lines.
+We need to decide explicitly which pixels are part of the lines, and also if they  belong to the left or right line.
 
-To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
-![alt text][image2]
+I used a histogram to add up the pixel values along each column in the image. In my thresholded binary image, pixels are either 0 or 1, so the two most prominent peaks in this histogram will probably describe the x-position of the base of the lane lines. From that point, I can use a sliding window, placed around the line centers, to find and follow the lines up to the top of the frame.
 
-#### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
+The locate_lane_lines() method in the notebook is handling the lane lines locating step, and its using 20 sliding window on each image frame, with margin of 50 pixels for each window.
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+## Fit a Polynomial
 
-![alt text][image3]
 
-#### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
+## Pipeline (for images)
 
+ The first thing we'll do is to compute the camera calibration matrix and distortion coefficients. We only need to compute these once, and then we'll apply them to undistort each new frame in the pipeline. Next, we'll apply thresholding by various combinations of color and gradient thresholds to generate a binary image where the lane lines are clearly visible. The next step is to pick four points in a trapezoidal shape (similar to region masking) that would represent a rectangle when looking down on the road from above, and apply a perspective transform on the image.
+
+The main pipeline receiving an image and perform the following steps on it:
+1. Apply the distortion correction
+2. Create a thresholded binary image
+3. Apply a perspective transform to rectify binary image ("birds-eye view").
+4. Using the sliding window to detect lane pixels and fit to find the lane boundary.
+5. Calculating the polygon to determine the curvature of the lanes
+6. Draw the detected lane boundaries back onto the original image
+
+
+
+## Pipeline (videos)
+
+I was satisfied that the pipeline is making good results on detecting the lanes on the test videos.
+
+The output video of the car completing the tracks can also be found here:
+
+Track 1  |  Track 2 (partially)
+:-------------------------:|:-------------------------:
+[![video track_1](https://github.com/shmulik-willinger/behavioral_cloning/blob/master/readme_img/behavioral_cloning_simulator_track_1.gif)](http://www.youtube.com/watch?v=fIvBNRCIY4U)  |  [![video track_2](https://github.com/shmulik-willinger/behavioral_cloning/blob/master/readme_img/behavioral_cloning_simulator_track_2.gif)](http://www.youtube.com/watch?v=A1280XlpITA)
 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
@@ -98,19 +120,6 @@ Then I did some other stuff and fit my lane lines with a 2nd order polynomial ki
 
 I did this in lines # through # in my code in `my_other_file.py`
 
-#### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
-
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
-
-![alt text][image6]
-
----
-
-### Pipeline (video)
-
-#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
-
-Here's a [link to my video result](./project_video.mp4)
 
 ---
 
