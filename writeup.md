@@ -82,6 +82,10 @@ I used a histogram to add up the pixel values along each column in the image. In
 
 The locate_lane_lines() method in the notebook is handling the lane lines locating step, and its using 20 sliding window on each image frame, with margin of 50 pixels for each window.
 
+Here is an example of this step on a test image:
+
+![]( https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/readme_img/locate_lane_lines.jpg?raw=true)
+
 ## Fit a Polynomial
 
 
