@@ -86,8 +86,23 @@ Here is an example of this step on a test image:
 
 ![]( https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/readme_img/locate_lane_lines.jpg?raw=true)
 
-## Fit a Polynomial
+## Measuring Curvature
 
+ So now we have a thresholded image, where we've estimated which pixels belong to the left and right lane lines and we've fit a polynomial to those pixel positions. Now we'll compute the radius of curvature of the fit.
+
+![]( https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/readme_img/radius_of_curvature.jpg?raw=true)
+
+For the images of this project we can assume the following:
+1. The lane is about 30 meters long and 3.7 meters wide.
+2. The lane width is 12 feet (3.7 meters) according to the U.S. regulations requirment
+3. The dashed lane lines are 10 feet (3 meters) long each.
+4. The camera is mounted at the center of the car, such that the lane center is the midpoint at the bottom of the image between the two lines
+
+So we need to define conversions in x and y from pixels space to meters and to calculate the radius of curvature after correcting for scale in x and y.
+
+The method measuring_curvature() in the notebook is handling this step, and the output of this procedure on a test image looks like this:
+
+![]( https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/readme_img/measuring_curvature.jpg?raw=true)
 
 ## Pipeline (for images)
 
