@@ -16,6 +16,20 @@ The goals / steps of this project are the following:
 
 ---
 
+## Pipeline (for images)
+
+ The first thing we'll do is to compute the camera calibration matrix and distortion coefficients. We only need to compute these once, and then we'll apply them to undistort each new frame in the pipeline. Next, we'll apply thresholding by various combinations of color and gradient thresholds to generate a binary image where the lane lines are clearly visible. The next step is to pick four points in a trapezoidal shape (similar to region masking) that would represent a rectangle when looking down on the road from above, and apply a perspective transform on the image.
+
+The main pipeline receiving an image and perform the following steps on it:
+1. Apply the distortion correction
+2. Create a thresholded binary image
+3. Apply a perspective transform to rectify binary image ("birds-eye view").
+4. Using the sliding window to detect lane pixels and fit to find the lane boundary.
+5. Calculating the polygon to determine the curvature of the lanes
+6. Draw the detected lane boundaries back onto the original image
+
+Let's go over the steps:
+
 ## Camera Calibration
 
 Image distortion occurs when a camera looks at 3D objects in the real world and transforms them into a 2D image. This affect can change the apparent of size and shape of objects in the image. The first step in analyzing camera images, is to undo this distortion so that we can get correct and useful information out of them.
@@ -104,18 +118,6 @@ The method measuring_curvature() in the notebook is handling this step, and the 
 
 ![]( https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/readme_img/measuring_curvature.jpg?raw=true)
 
-## Pipeline (for images)
-
- The first thing we'll do is to compute the camera calibration matrix and distortion coefficients. We only need to compute these once, and then we'll apply them to undistort each new frame in the pipeline. Next, we'll apply thresholding by various combinations of color and gradient thresholds to generate a binary image where the lane lines are clearly visible. The next step is to pick four points in a trapezoidal shape (similar to region masking) that would represent a rectangle when looking down on the road from above, and apply a perspective transform on the image.
-
-The main pipeline receiving an image and perform the following steps on it:
-1. Apply the distortion correction
-2. Create a thresholded binary image
-3. Apply a perspective transform to rectify binary image ("birds-eye view").
-4. Using the sliding window to detect lane pixels and fit to find the lane boundary.
-5. Calculating the polygon to determine the curvature of the lanes
-6. Draw the detected lane boundaries back onto the original image
-
 
 
 ## Pipeline (videos)
@@ -127,17 +129,6 @@ The output video of the car completing the tracks can also be found here:
 Track 1  |  Track 2 (partially)
 :-------------------------:|:-------------------------:
 [![video track_1](https://github.com/shmulik-willinger/behavioral_cloning/blob/master/readme_img/behavioral_cloning_simulator_track_1.gif)](http://www.youtube.com/watch?v=fIvBNRCIY4U)  |  [![video track_2](https://github.com/shmulik-willinger/behavioral_cloning/blob/master/readme_img/behavioral_cloning_simulator_track_2.gif)](http://www.youtube.com/watch?v=A1280XlpITA)
-
-
-#### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
-
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
-
-![alt text][image5]
-
-#### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
-
-I did this in lines # through # in my code in `my_other_file.py`
 
 
 ---
