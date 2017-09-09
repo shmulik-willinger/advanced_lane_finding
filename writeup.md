@@ -129,8 +129,7 @@ The output result for the test images can be found on the [test_images](https://
 I was satisfied that the image processing pipeline that was established to find the lane lines in images successfully processes the video. The standard output video can be found on the [test_videos](https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/test_videos) folder.
 The advanced lane finding video with extended data display can be found on the link below:
 
-[![video output](https://github.com/shmulik-willinger/behavioral_cloning/blob/master/readme_img/behavioral_cloning_simulator_track_2.gif)](http://www.youtube.com/watch?v=A1280XlpITA)
-
+[![video output](https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/readme_img/project_video_extended.gif)](http://www.youtube.com/watch?v=k4Y-3ckoSmU)
 
 ---
 
