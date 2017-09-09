@@ -16,7 +16,7 @@ The goals / steps of this project are the following:
 
 ---
 
-## Pipeline (for images)
+## Pipeline
 
  The first thing we'll do is to compute the camera calibration matrix and distortion coefficients. We only need to compute these once, and then we'll apply them to undistort each new frame in the pipeline. Next, we'll apply thresholding by various combinations of color and gradient thresholds to generate a binary image where the lane lines are clearly visible. The next step is to pick four points in a trapezoidal shape (similar to region masking) that would represent a rectangle when looking down on the road from above, and apply a perspective transform on the image.
 
@@ -120,13 +120,16 @@ The method measuring_curvature() in the notebook is handling this step, and the 
 
 
 
-## Pipeline (videos)
+## Testing the Pipeline
 
-I was satisfied that the pipeline is making good results on detecting the lanes on the test videos.
+The output result for the test images can be found on the [test_images](https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/test_images) folder. Here is an example of the output:
 
-The output video of the car completing the tracks can also be found here:
+![]( https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/readme_img/mapped_lane.png?raw=true)
 
-Track 1  |  Track 2 (partially)
+I was satisfied that the pipeline is making good results on detecting the lanes on the test videos also. The standard output videos can be found on the [test_videos](https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/test_videos) folder.
+The advanced lane finding videos with extended data display can be found on the links below:
+
+project video  |  challenge video
 :-------------------------:|:-------------------------:
 [![video track_1](https://github.com/shmulik-willinger/behavioral_cloning/blob/master/readme_img/behavioral_cloning_simulator_track_1.gif)](http://www.youtube.com/watch?v=fIvBNRCIY4U)  |  [![video track_2](https://github.com/shmulik-willinger/behavioral_cloning/blob/master/readme_img/behavioral_cloning_simulator_track_2.gif)](http://www.youtube.com/watch?v=A1280XlpITA)
 
