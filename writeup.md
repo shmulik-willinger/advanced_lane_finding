@@ -126,12 +126,10 @@ The output result for the test images can be found on the [test_images](https://
 
 ![]( https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/readme_img/mapped_lane.png?raw=true)
 
-I was satisfied that the pipeline is making good results on detecting the lanes on the test videos also. The standard output videos can be found on the [test_videos](https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/test_videos) folder.
-The advanced lane finding videos with extended data display can be found on the links below:
+I was satisfied that the image processing pipeline that was established to find the lane lines in images successfully processes the video. The standard output video can be found on the [test_videos](https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/test_videos) folder.
+The advanced lane finding video with extended data display can be found on the link below:
 
-project video  |  challenge video
-:-------------------------:|:-------------------------:
-[![video track_1](https://github.com/shmulik-willinger/behavioral_cloning/blob/master/readme_img/behavioral_cloning_simulator_track_1.gif)](http://www.youtube.com/watch?v=fIvBNRCIY4U)  |  [![video track_2](https://github.com/shmulik-willinger/behavioral_cloning/blob/master/readme_img/behavioral_cloning_simulator_track_2.gif)](http://www.youtube.com/watch?v=A1280XlpITA)
+[![video output](https://github.com/shmulik-willinger/behavioral_cloning/blob/master/readme_img/behavioral_cloning_simulator_track_2.gif)](http://www.youtube.com/watch?v=A1280XlpITA)
 
 
 ---

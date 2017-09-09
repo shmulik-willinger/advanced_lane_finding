@@ -6,6 +6,7 @@ Overview
 ---
 In this project, the goal is to write a software pipeline to identify the lane boundaries in a video, and to measure things like how much the lane is curving and where the vehicle is with respect to center. The algorithm will handle complex scenarios like curving lines, shadows and changes in the color of the pavement.
 
+![]( https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/readme_img/mapped_lane.png?raw=true)
 
 The Goals
 ---
@@ -47,9 +48,7 @@ The sections are divided according to:
 
 The output videos of can be found here:
 
-Track 1  |  Track 2 (partially)
-:-------------------------:|:-------------------------:
-[![video track_1](https://github.com/shmulik-willinger/behavioral_cloning/blob/master/readme_img/behavioral_cloning_simulator_track_1.gif)](http://www.youtube.com/watch?v=fIvBNRCIY4U)  |  [![video track_2](https://github.com/shmulik-willinger/behavioral_cloning/blob/master/readme_img/behavioral_cloning_simulator_track_2.gif)](http://www.youtube.com/watch?v=A1280XlpITA)
+[![video output](https://github.com/shmulik-willinger/behavioral_cloning/blob/master/readme_img/behavioral_cloning_simulator_track_2.gif)](http://www.youtube.com/watch?v=A1280XlpITA)
 
 
 ## Dependencies
