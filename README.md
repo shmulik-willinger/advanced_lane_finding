@@ -29,9 +29,9 @@ The project includes all required files and can be used to run the pipeline on n
 My project includes the following files/folders:
 * Advanced_Lane_Finding.ipynb - the notebook with the main pipeline and all methods, including images demonstrating the output for each step.
 * writeup.md - Details of the entire project, the steps, the results and conclusions
-* test_images - the folder contain the test images and output images of the pieline
-* test_videos - the folder contain the test videos and output of the pieline
-* camera_calibration - this folder contain the images I took for camera calibration
+* test_images - the folder contain the test images and output images of the pipeline
+* test_videos - the folder contain the test videos and output of the pipeline
+* camera_calibration - this folder contains the images I took for camera calibration
 
 ## Output video
 

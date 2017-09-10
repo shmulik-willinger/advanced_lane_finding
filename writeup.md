@@ -67,10 +67,10 @@ For the image above the transformation uses the following points:
 
 | Source        | Destination   |
 |:-------------:|:-------------:|
-| 704, 453      | 960, 0        |
-| 1280, 720      | 960, 720      |
-| 0, 720     | 320, 720      |
-| 576, 453      | 320, 0        |
+| 670, 440      | 960, 0        |
+| 1030, 666      | 960, 720      |
+| 280, 666     | 320, 720      |
+| 610, 440      | 320, 0        |
 
 By looking at the transformed image we can see that both lines curve a little to the left.
 
