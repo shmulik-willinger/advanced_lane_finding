@@ -24,29 +24,18 @@ The goals / steps of this project are the following:
 
 ## Details About the Files
 
-The project includes all required files and can be used to run the simulator in autonomous mode
+The project includes all required files and can be used to run the pipeline on new images and video frames.
 
-My project includes the following files:
-* Behavioral_Cloning.ipynb - the notebook with the data preprocessing and the model training
-* model.py - the script used to create and train the model
-* drive.py - for driving the car in autonomous mode
-* model.h5 - containing the trained convolution neural network
-* model.json - the architecture of the model as json
-* writeup.md - summarizing the project and results
-* video.mp4 - a video recording of the vehicle driving autonomously around the track
-
-The images for camera calibration are stored in the folder called `camera_cal`. The images in `test_images` are for testing your pipeline on single frames.
-
-The Advanced_Lane_Finding.ipynb file contains all the functions of the project and the main  pipeline I used for detecting the lane lins.
-The sections are divided according to:
-* Gathering the data
-* Preprocessing the data by batchs
-* Defining the Model
-* Training the Model
+My project includes the following files/folders:
+* Advanced_Lane_Finding.ipynb - the notebook with the main pipeline and all methods, including images demonstrating the output for each step.
+* writeup.md - Details of the entire project, the steps, the results and conclusions
+* test_images - the folder contain the test images and output images of the pieline
+* test_videos - the folder contain the test videos and output of the pieline
+* camera_calibration - this folder contain the images I took for camera calibration
 
 ## Output video
 
-The output videos of can be found here:
+The advanced lane finding video with extended data display can be found on the link below:
 
 [![video output](https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/readme_img/project_video_extended.gif)](http://www.youtube.com/watch?v=k4Y-3ckoSmU)
 
