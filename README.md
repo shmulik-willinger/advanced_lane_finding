@@ -37,7 +37,7 @@ My project includes the following files/folders:
 
 The advanced lane finding video with extended data display can be found on the link below:
 
-[![video output](https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/readme_img/project_video_extended.gif)](http://www.youtube.com/watch?v=k4Y-3ckoSmU)
+[![video output](https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/readme_img/project_video_extended.gif)](http://www.youtube.com/watch?v=hj4r5QzZNMY)
 
 
 ## Dependencies

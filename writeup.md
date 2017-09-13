@@ -18,12 +18,12 @@ The goals / steps of this project are the following:
 
 ## Pipeline
 
- The first thing we'll do is to compute the camera calibration matrix and distortion coefficients. We only need to compute these once, and then we'll apply them to undistort each new frame in the pipeline. Next, we'll apply thresholding by various combinations of color and gradient thresholds to generate a binary image where the lane lines are clearly visible. The next step is to pick four points in a trapezoidal shape (similar to region masking) that would represent a rectangle when looking down on the road from above, and apply a perspective transform on the image.
+ The first thing we'll do is to compute the camera calibration matrix and distortion coefficients. We only need to compute these once, and then we'll apply them to undistort each new frame in the pipeline. Next, we'll pick four points in a trapezoidal shape (similar to region masking) that would represent a rectangle when looking down on the road from above, and apply a perspective transform on the image. The next step is to apply thresholding by various combinations of color and gradient thresholds to generate a binary image where the lane lines are clearly visible. The next step is to calculate the polynomial and curvature using a sliding window that will slice each frame to horizontal lines and will look for the lines in them.
 
 The main pipeline receiving an image and performs the following steps on it:
 1. Applying the distortion correction
-2. Creating a thresholded binary image
-3. Applying a perspective transform to rectify binary image ("birds-eye view").
+2. Applying a perspective transform to rectify binary image ("birds-eye view").
+3. Creating a thresholded binary image
 4. Using the sliding window to detect lane pixels and fit to find the lane boundary.
 5. Calculating the polynomial to determine the curvature of the lanes
 6. Drawing the detected lane boundaries back onto the original image
@@ -76,7 +76,7 @@ By looking at the transformed image we can see that both lines curve a little to
 
 ## Thresholded binary image
 
-To create a thresholded binary image we need to use various aspects of the gradient measurements like thresholds of the x and y gradients, the overall gradient magnitude, and the gradient direction to focus on pixels that are likely to be part of the lane lines. I used a combination of the following techniques:
+To create a thresholded binary image we need to use various aspects of the gradient measurements like thresholds of the x and y gradients, the overall gradient magnitude, and the gradient direction to focus on pixels that are likely to be part of the lane lines. I used a combination from the following techniques:
 
 1. Sobel - Using the Sobel operation to identify pixels where the gradient of an image falls within a specified threshold range.
 
@@ -89,6 +89,8 @@ To create a thresholded binary image we need to use various aspects of the gradi
 5. Value (R channel) - represent a way to measure the relative lightness or darkness of a color. The R channel performing well on the white lines.
 
 6. Histogram equalization - improve the contrast of our images, in order to improve the white lines detection.
+
+7. LUV (L channel) - attempted perceptual uniformity. The L channel performing well on the bright images.
 
 The main thresholding step can be found in the notebook in the function thresholding() which responsible for the thresholded binary image procedure.
 
@@ -103,7 +105,7 @@ We need to decide explicitly which pixels are part of the lines, and also if the
 
 I used a histogram to add up the pixel values along each column in the image. In my thresholded binary image, pixels are either 0 or 1, so I assumed the two most prominent peaks in this histogram will describe the x-position of the base of the lane lines. From that point, I can use a sliding window, placed around the line centers, to find and follow the lines up to the top of the frame.
 
-The locate_lane_lines() method in the notebook is handling the lane lines locating step. I used 20 sliding windows on each image frame, with margin of 50 pixels for each window. I also set a minimum of 50 pixels for a group in the window to recenter the next window on the mean position.
+The locate_lane_lines() method in the notebook is handling the lane lines locating step. I used 20 sliding windows on each image frame, with margin of 65 pixels for each window. I also set a minimum of 50 pixels for a group in the window to recenter the next window on the mean position.
 
 Here is an example of this step on a test image:
 
@@ -153,7 +155,7 @@ The output result for the test images can be found on the [test_images](https://
 I was satisfied that the image processing pipeline that was established to find the lane lines in images, also successfully processed the video. The standard output video can be found on the [test_videos](https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/test_videos) folder.
 The advanced lane finding video with extended data display can be found on the link below:
 
-[![video output](https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/readme_img/project_video_extended.gif)](http://www.youtube.com/watch?v=k4Y-3ckoSmU)
+[![video output](https://github.com/shmulik-willinger/advanced_lane_finding/blob/master/readme_img/project_video_extended.gif)](http://www.youtube.com/watch?v=hj4r5QzZNMY)
 
 ---
 
